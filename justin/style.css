@@ -1,0 +1,461 @@
+
+    /* Komentar: Reset dan Variabel Dasar */
+:root {
+    --color-black: #1a1a1a; /* Hitam pekat */
+    --color-red: #cc0000; /* Merah terang (Porsche/Racing Red) */
+    --color-white: #f5f5f5; /* Putih sedikit off-white */
+    --color-gray: #333;
+    --font-primary: 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    line-height: 1.6;
+}
+
+/* Komentar: Utilitas Umum */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.red-text {
+    color: var(--color-red);
+}
+
+.section-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Komentar: Styling Tombol (Button) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.primary-btn {
+    background-color: var(--color-red);
+    color: var(--color-white);
+}
+
+.primary-btn:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+
+.secondary-btn {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-black);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+}
+
+/* Komentar: Header dan Navigasi */
+.header {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-list a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+.nav-list a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--color-red);
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-btn:hover {
+    color: var(--color-red);
+}
+
+.menu-toggle {
+    display: none; /* Sembunyikan di desktop */
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Komentar: Hero Banner (Home Section) */
+.hero-banner {
+    display: flex;
+    min-height: 80vh;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-content {
+    flex: 1;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 80%;
+}
+
+.banner-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+    min-height: 400px;
+}
+
+/* Komentar: Product Section */
+.products-section {
+    padding: 80px 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--color-white);
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--color-red);
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 10px;
+}
+
+.product-desc {
+    color: var(--color-gray);
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.buy-now-btn {
+    display: none; /* Sembunyikan 'Buy Now' di desktop */
+}
+
+/* Komentar: About dan Contact Section */
+.about-section, .contact-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 30px auto 0;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 1.5em;
+    color: var(--color-black);
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--color-red);
+}
+
+/* Komentar: Review Section */
+.reviews-section {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 60px 0;
+}
+
+.review-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.review-card {
+    background-color: var(--color-gray);
+    padding: 30px;
+    max-width: 400px;
+    text-align: left;
+    border-left: 5px solid var(--color-red);
+}
+
+.review-card i {
+    color: var(--color-red);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.reviewer-name {
+    font-style: italic;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Komentar: Footer */
+.footer {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    padding-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-section {
+    width: 45%; /* Untuk desktop */
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: var(--color-red);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: var(--color-white);
+    text-decoration: none;
+    line-height: 2;
+    font-size: 0.9em;
+}
+
+.footer-section a:hover {
+    color: var(--color-red);
+}
+
+.copyright {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #222;
+    font-size: 0.8em;
+}
+
+/* Komentar: Media Queries untuk Responsif (Mobile Version) */
+@media (max-width: 768px) {
+    /* Penyesuaian Navigasi Mobile */
+    .navbar {
+        display: none; /* Sembunyikan navigasi di mobile */
+        position: absolute;
+        top: 60px; /* Di bawah header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-black);
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: block; /* Tampilkan saat toggle aktif */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-toggle {
+        display: block; /* Tampilkan tombol menu */
+    }
+
+    .cart-btn {
+        margin-right: 15px; /* Sedikit jarak dari menu toggle */
+    }
+
+    /* Penyesuaian Hero Banner Mobile */
+    .hero-banner {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .banner-content {
+        padding: 40px 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 2.5em;
+    }
+
+    .hero-subtitle {
+        font-size: 1em;
+        max-width: 100%;
+    }
+
+    /* Penyesuaian Produk Mobile */
+    .product-card {
+        padding-bottom: 40px; /* Ruang untuk tombol Buy Now */
+    }
+    
+    .secondary-btn {
+        display: none; /* Sembunyikan 'Add to Garage' di mobile */
+    }
+
+    .buy-now-btn {
+        display: block; /* Tampilkan 'Buy Now' di mobile */
+        width: 100%;
+        margin-top: 15px;
+        background-color: var(--color-red);
+        color: var(--color-white);
+        padding: 15px 0; /* Padding lebih besar */
+        text-align: center;
+        border-radius: 0;
+    }
+    
+    .buy-now-btn:hover {
+        background-color: var(--color-black);
+    }
+
+    /* Penyesuaian Review Mobile */
+    .review-grid {
+        flex-direction: column;
+    }
+
+    /* Penyesuaian Footer Mobile */
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+}
